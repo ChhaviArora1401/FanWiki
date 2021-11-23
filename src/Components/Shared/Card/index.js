@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Wrapper = styled.div`
 background-color: white;
@@ -15,16 +16,19 @@ img{
 const Iwrapper = styled.div`
 `
 
-const Card = () => {
-    return <Wrapper>
-        <Image />
-        <h2>heading</h2>
-    </Wrapper>
+const Card = (props) => {
+    const { title, posterLink, link } = props.data
+    return <Link to={link}>
+        <Wrapper>
+            <Image src={posterLink} />
+            <h2>{title}</h2>
+        </Wrapper>
+    </Link>
 };
 
-export const Image = () => {
+export const Image = (props) => {
     return <Iwrapper>
-        <img src="https://pbs.twimg.com/media/FBbTM89XIAMws_U.jpg" />
+        <img src={props.src} />
     </Iwrapper>
 };
 

@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { Container } from "reactstrap";
 import Card from "../../Components/Shared/Card/index";
-
+import data from '../../Data/index.json'
+console.log(data)
 const Wrapper = styled.div`
 .grid {
     display: grid;
@@ -15,12 +16,11 @@ const Main = () => {
     return <Wrapper className="d-flex align-items-center justify-content-center flex-column">
         <Container>
             <div className="grid">
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
+                {
+                    data.data.map(d => {
+                        return <Card data={d} />
+                    })
+                }
             </div>
         </Container>
     </Wrapper>
