@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Container } from "reactstrap";
-import Card from "../../Components/Shared/Card/index";
+import Card from "../../Components/Subpage/Card/index";
 
 const Wrapper = styled.div`
 .grid {
@@ -11,17 +11,17 @@ const Wrapper = styled.div`
 }
 `
 
-const Main = () => {
+const Main = (props) => {
+    console.log(props)
     return <Wrapper className="d-flex align-items-center justify-content-center flex-column">
         <Container>
-            <h1 className="text-center mt-4">Selected</h1>
+            <h1 className="text-center mt-4">{props.title}</h1>
             <div className="grid">
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
+                {
+                    props.data.data.map(d => {
+                        return <Card title={props.title} data={d} />
+                    })
+                }
             </div>
         </Container>
     </Wrapper>

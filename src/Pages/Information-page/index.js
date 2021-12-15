@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Row, Col, Container } from "reactstrap";
 import { Image } from "../../Components/Shared/Card/index";
+import { useLocation, useNavigate } from "react-router";
 
 const Wrapper = styled.div`
 font-size: 1.5rem;
@@ -18,40 +19,47 @@ img {
 const Nwrapper = styled.div`
 `
 
-export const Name = () => {
+export const Name = ({ name }) => {
     return <Nwrapper>
-        Name 1
+        {name}
     </Nwrapper>
 };
 
 const Information = () => {
+
+    const { state } = useLocation();
+    console.log(state);
     return <Wrapper className="d-flex align-items-center justify-content-center flex-column">
         <Container>
             <Row className="mt-5">
                 <Col>
-                    <Image />
+                    <Image src={state.posterLink} />
                 </Col>
                 <Col>
-                    <h2>Heading</h2>
-                    <p className="text-white">Msg</p>
-                    <p><span className="text-white">Directed by: </span> d1 </p>
-                    <p><span className="text-white">Budget: </span> amt </p>
-                    <p><span className="text-white">Revenue: </span> amt </p>
-                    <h3> Cast </h3>
-                    <div className="grid">
-                        <Name />
-                        <Name />
-                        <Name />
-                        <Name />
-                        <Name />
-                        <Name />
-                        <Name />
-                        <Name />
-                        <Name />
-                        <Name />
-                    </div>
+                    <h2>{state.title}</h2>
+                    <p className="text-white">{state.description}</p>
+                    {
+                        !state.director ?
+                            <p><span className="text-white">Developed by: </span> {state.developer} </p>
+                            : <>
+
+                                <p><span className="text-white">Directed by: </span> {state.director} </p>
+                                <p><span className="text-white">Budget: </span> {state.budget} </p>
+                                <p><span className="text-white">Revenue: </span> {state.revenue} </p></>
+                    }
+
                 </Col>
             </Row>
+            <h3> {state.stars ? "Cast" : "Platforms"} </h3>
+            <div className="grid">
+                {
+                    state.stars ? state.stars.map(s => {
+                        return <Name name={s} />
+                    }) : state.platforms.map(s => {
+                        return <Name name={s} />
+                    })
+                }
+            </div>
         </Container>
     </Wrapper>
 };

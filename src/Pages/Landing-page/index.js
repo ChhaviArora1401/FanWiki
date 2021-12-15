@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { Container } from "reactstrap";
 import Card from "../../Components/Shared/Card/index";
-import data from '../../Data/index.json'
-console.log(data)
+import data from '../../Data/index.json';
+
 const Wrapper = styled.div`
 .grid {
     display: grid;
