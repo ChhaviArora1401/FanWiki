@@ -1,3 +1,8 @@
 body {
-  background-color: plum;
+  background: url('https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701393042.jpg');
+}
+
+.text-head{
+  color: black;
+  text-shadow: 2px 2px white;
 }

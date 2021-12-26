@@ -26,8 +26,6 @@ function App() {
         <Route path="/witcher" element={< Main2 title="The Witcher" data={WitcherData} />} />
         <Route path="/:title" element={<Information />} />
       </Routes>
-      {/* <Main2 />
-      <Information /> */}
       <Foot />
     </div>
   );
