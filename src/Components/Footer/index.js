@@ -9,7 +9,9 @@ margin-top: 5rem;
 
 const Foot = () => {
     return <Wrapper>
-        By Chhavi Arora, 05617702019
+        <Link to="https://github.com/ChhaviArora1401">
+            By Chhavi Arora, 05617702019
+        </Link>
     </Wrapper>
 };
 
